@@ -1,4 +1,4 @@
-package kz.greetgo.gyzjutqwqvwlzxcbzcfr.domain.exception;
+package kz.greetgo.gyzjutqwqvwlzxcbzcfr.exception;
 
 import kz.greetgo.gyzjutqwqvwlzxcbzcfr.domain.dto.ErrorResponse;
 import org.springframework.http.HttpStatus;

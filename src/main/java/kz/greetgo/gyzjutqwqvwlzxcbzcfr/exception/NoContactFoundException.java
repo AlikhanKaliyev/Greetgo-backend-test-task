@@ -1,4 +1,4 @@
-package kz.greetgo.gyzjutqwqvwlzxcbzcfr.domain.exception;
+package kz.greetgo.gyzjutqwqvwlzxcbzcfr.exception;
 
 public class NoContactFoundException extends RuntimeException{
     public NoContactFoundException() {
