@@ -1,4 +1,4 @@
-package kz.greetgo.gyzjutqwqvwlzxcbzcfr.domain.controller;
+package kz.greetgo.gyzjutqwqvwlzxcbzcfr.controller;
 
 import kz.greetgo.gyzjutqwqvwlzxcbzcfr.domain.dto.Filter;
 import kz.greetgo.gyzjutqwqvwlzxcbzcfr.domain.dto.PsqlContactDTO;
