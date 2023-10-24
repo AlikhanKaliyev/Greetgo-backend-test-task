@@ -56,6 +56,7 @@ public class PsqlContactService implements ContactService<PsqlContactDTO> {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public PsqlContactDTO updateContact(String parameter, PsqlContactDTO psqlContactDTO) {
         parameter = PhoneNumberUtil.validateAndTransformPhoneNumber(parameter);
 
@@ -102,6 +103,7 @@ public class PsqlContactService implements ContactService<PsqlContactDTO> {
         }
     }
 
+    @Override
     public DeleteResponse deleteContact(String parameter) {
         parameter = PhoneNumberUtil.validateAndTransformPhoneNumber(parameter);
 
