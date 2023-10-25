@@ -30,7 +30,7 @@ class GyzjutqwqvwlzxcbzcfrApplicationTests extends AbstractTestNGSpringContextTe
 
     @Test
     void checkMongoGetContact() {
-        MongoContactDTO psqlContactDTO1 = mongoContactService.getContact("6537b6b179b7d360ea78b8d3");
+        MongoContactDTO psqlContactDTO1 = mongoContactService.getContact("6537b4fcfeedbb4a275485d4");
         MongoContactDTO psqlContactDTO2 = mongoContactService.getContact("87755556666");
         MongoContactDTO psqlContactDTO3 = mongoContactService.getContact("87777777777");
         Assert.assertEquals(psqlContactDTO1, psqlContactDTO2);

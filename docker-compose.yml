@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-container
+    environment:
+      POSTGRES_PASSWORD: 12345678
+      POSTGRES_DB: telephone_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb-container
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  postgres-data:
+  mongo-data:

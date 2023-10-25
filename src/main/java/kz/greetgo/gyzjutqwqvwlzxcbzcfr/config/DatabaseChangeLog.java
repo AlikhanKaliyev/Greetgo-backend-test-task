@@ -26,6 +26,7 @@ public class DatabaseChangeLog {
 
     private MongoContact createContact(ObjectId id, String name, int birthYear, String firstTelephoneNumber, String secondPhoneNumber, LocalDateTime createdAt) {
         MongoContact contact = new MongoContact();
+        contact.setId(id);
         contact.setName(name);
         contact.setBirthYear(birthYear);
         contact.setFirstPhoneNumber(firstTelephoneNumber);
