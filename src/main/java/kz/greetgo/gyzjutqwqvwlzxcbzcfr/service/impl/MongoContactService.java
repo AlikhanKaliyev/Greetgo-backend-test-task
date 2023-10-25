@@ -4,7 +4,6 @@ import kz.greetgo.gyzjutqwqvwlzxcbzcfr.domain.dto.DeleteResponse;
 import kz.greetgo.gyzjutqwqvwlzxcbzcfr.domain.dto.Filter;
 import kz.greetgo.gyzjutqwqvwlzxcbzcfr.domain.dto.MongoContactDTO;
 import kz.greetgo.gyzjutqwqvwlzxcbzcfr.domain.entity.MongoContact;
-import kz.greetgo.gyzjutqwqvwlzxcbzcfr.domain.entity.PsqlContact;
 import kz.greetgo.gyzjutqwqvwlzxcbzcfr.exception.DuplicatePhoneNumberException;
 import kz.greetgo.gyzjutqwqvwlzxcbzcfr.exception.FilterDataException;
 import kz.greetgo.gyzjutqwqvwlzxcbzcfr.exception.NoContactFoundException;
@@ -19,7 +18,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,6 +28,8 @@ public class MongoContactService implements ContactService<MongoContactDTO> {
 
     @Override
     public MongoContactDTO getContact(String parameter) {
+        parameter = PhoneNumberUtil.validateAndTransformPhoneNumber(parameter);
+
         MongoContact mongoContact = mongoContactRepository.findContactsByParameter(parameter);
         if (mongoContact == null) throw new NoContactFoundException();
 
