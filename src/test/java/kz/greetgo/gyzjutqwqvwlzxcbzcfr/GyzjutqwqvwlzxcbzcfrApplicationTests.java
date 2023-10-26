@@ -12,6 +12,9 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 @SpringBootTest
 class GyzjutqwqvwlzxcbzcfrApplicationTests extends AbstractTestNGSpringContextTests {
     @MockBean
@@ -22,30 +25,40 @@ class GyzjutqwqvwlzxcbzcfrApplicationTests extends AbstractTestNGSpringContextTe
 
     @Test
     void checkPsqlGetContact() {
-        PsqlContactDTO psqlContactDTO1 = new PsqlContactDTO();
-        PsqlContactDTO psqlContactDTO2 = new PsqlContactDTO();
-        PsqlContactDTO psqlContactDTO3 = new PsqlContactDTO();
+        PsqlContactDTO expectedPsqlContactDTO = new PsqlContactDTO();
+        expectedPsqlContactDTO.setId(UUID.fromString("83210715-30e8-46f5-a09f-9886ba986c84"));
+        expectedPsqlContactDTO.setName("София");
+        expectedPsqlContactDTO.setBirthYear(1998);
+        expectedPsqlContactDTO.setFirstPhoneNumber("87755556666");
+        expectedPsqlContactDTO.setSecondPhoneNumber("87777777777");
+        expectedPsqlContactDTO.setCreatedAt(LocalDateTime.now());
 
-        Mockito.when(psqlContactService.getContact("83210715-30e8-46f5-a09f-9886ba986c84")).thenReturn(psqlContactDTO1);
-        Mockito.when(psqlContactService.getContact("87755556666")).thenReturn(psqlContactDTO2);
-        Mockito.when(psqlContactService.getContact("87777777777")).thenReturn(psqlContactDTO3);
+        Mockito.when(psqlContactService.getContact("83210715-30e8-46f5-a09f-9886ba986c84")).thenReturn(expectedPsqlContactDTO);
 
-        Assert.assertEquals(psqlContactDTO1, psqlContactDTO2);
-        Assert.assertEquals(psqlContactDTO2, psqlContactDTO3);
+        PsqlContactDTO resultPsqlContactDTO = psqlContactService.getContact("83210715-30e8-46f5-a09f-9886ba986c84");
+
+        Mockito.verify(psqlContactService).getContact("83210715-30e8-46f5-a09f-9886ba986c84");
+
+        Assert.assertEquals(expectedPsqlContactDTO, resultPsqlContactDTO);
     }
 
     @Test
     void checkMongoGetContact() {
-        MongoContactDTO mongoContactDTO1 = new MongoContactDTO();
-        MongoContactDTO mongoContactDTO2 = new MongoContactDTO();
-        MongoContactDTO mongoContactDTO3 = new MongoContactDTO();
+        MongoContactDTO expectedMongoContactDTO = new MongoContactDTO();
+        expectedMongoContactDTO.setId("6537b4fcfeedbb4a275485d4");
+        expectedMongoContactDTO.setName("София");
+        expectedMongoContactDTO.setBirthYear(1998);
+        expectedMongoContactDTO.setFirstPhoneNumber("87755556666");
+        expectedMongoContactDTO.setSecondPhoneNumber("87777777777");
+        expectedMongoContactDTO.setCreatedAt(LocalDateTime.now());
 
-        Mockito.when(mongoContactService.getContact("6537b4fcfeedbb4a275485d4")).thenReturn(mongoContactDTO1);
-        Mockito.when(mongoContactService.getContact("87755556666")).thenReturn(mongoContactDTO2);
-        Mockito.when(mongoContactService.getContact("87777777777")).thenReturn(mongoContactDTO3);
+        Mockito.when(mongoContactService.getContact("87777777777")).thenReturn(expectedMongoContactDTO);
 
-        Assert.assertEquals(mongoContactDTO1, mongoContactDTO2);
-        Assert.assertEquals(mongoContactDTO2, mongoContactDTO3);
+        MongoContactDTO resultMongoContactDTO = mongoContactService.getContact("87777777777");
+
+        Mockito.verify(mongoContactService).getContact("87777777777");
+
+        Assert.assertEquals(expectedMongoContactDTO, resultMongoContactDTO);
     }
 
 }
